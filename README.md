@@ -1,2 +1,0 @@
-# devpraveen.studio
-website
