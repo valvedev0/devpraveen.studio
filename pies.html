@@ -22,7 +22,7 @@
         <aside><img src="images/logo.png" alt="DevPraveen"></aside>
         <article>
             <h1>Services Include</h1>
-            <section class="columns-desktop">
+            <section class="columns-desktop"> 
                 <div class="pie">
                     <img src="images/apple-pie.png" alt="Apple Pie" />
                     <div class="columns">
@@ -42,7 +42,7 @@
                     <button data-order="cherry-pie">Check it</button>
                   </div>
             </section>
-           
+              
           </article>
     </main>
     <footer>
@@ -55,4 +55,29 @@
         </nav>
     </footer>
 </body>
+<script>
+    window.addEventListener("DOMContentLoaded", function(e) {
+   const orderButtons = document.querySelectorAll("button[data-order]");  // this is for making a constant variable which selects the order button attribute//
+      orderButtons.forEach(function(button){
+          button.addEventListener("click",function(e){
+              const button = e.currentTarget;
+              const container = button.parentNode;
+              
+               const order = {
+                   id: button.getAttribute("data-order"),
+                   title: container.querySelector(".title").innerText,
+                   price: container.querySelector(".price").innerText,
+                   desc: container.querySelector(".desc").innerText,
+               };
+               localStorage.setItem("order",JSON.stringify(order));
+
+               const url = window.location.href.replace("pies.html","order.html");
+               window.location.href = url;
+
+          });
+
+      });
+
+    });
+</script>
 </html>
